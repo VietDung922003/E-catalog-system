@@ -1,0 +1,3 @@
+error: undefined - undefined
+error: error - E11000 duplicate key error collection: Ecatalog-system.users index: email_1 dup key: { email: "dungviet2k4@gmail.com" }
+error: error - User validation failed: name: Please tell us your name

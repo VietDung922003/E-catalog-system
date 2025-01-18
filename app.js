@@ -38,7 +38,7 @@ app.use('/api', limiter);
 //body parse, reading data from body into req.body
 app.use(express.json({limit: '10kb'}));
 app.use(express.urlencoded({extended: true, limit: '10kb'}));
-// app.use(cookieParser());
+app.use(cookieParser());
 
 //data sanitization against NoSQL query injection
 app.use(mongoSantitize());
@@ -50,7 +50,9 @@ app.use(xss());
 app.use(
  hpp({
   whitelist: [
-
+   'price',
+   'ratingsQuantity',
+   'ratingsAverage'
   ],
  })
 );
@@ -74,9 +76,9 @@ app.use((req, res, next) => {
 
 //3 ROUTES
 app.use('/api/v1/brands', brandRouter);
-// app.use('/api/v1/reviews', reviewRouter);
-// app.use('/api/v1/categories', categoryRouter);
-// app.use('/api/v1/products', productRouter);
+app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/categories', categoryRouter);
+app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 
 
